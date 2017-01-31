@@ -1,5 +1,5 @@
-body{
-    background-color: #009688;
+body {
+    background-color: #2196f3;/*#009688;/*sdf*/
 }
 .card-cust {
     height: 550px;
@@ -16,7 +16,7 @@ body{
             transform: translate(-50%,-50%);
 
     border-radius: 2px;
-    background: #bdbdbd;
+    background: #90a4ae;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }
@@ -24,7 +24,6 @@ body{
 .card-cust:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
 }
-
 .box-big {
     height: 182px;
     width: 182px;
@@ -39,8 +38,31 @@ body{
 
     float: left;
 
-    background-color: #fff;
     cursor: pointer;
+
+    background-color: #fff;
+}
+.above {
+    height: 182px;
+    width: 182px;
+
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+}
+.ol1{
+    left: 184px;
+}
+.ol2{
+    left: 368px;
+}
+.ot1{
+    top: 184px;
+}
+.ot2{
+    top: 368px;
 }
 .centr {
     margin-right: 1px;
@@ -78,11 +100,15 @@ body{
     height: 90px;
     width: 240px;
 }
-.xo-img{
+.xo-img {
     height: 60px;
     width: 60px;
 }
-.center-page{
+.xo-img-mega {
+    height: 182px;
+    width: 182px;
+}
+.center-page {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -92,4 +118,7 @@ body{
     -webkit-transform: translate(-50%,-50%);
         -ms-transform: translateX(-50%) translateY(-50%);
             transform: translate(-50%,-50%);
+}
+.hide {
+    display: none;
 }
