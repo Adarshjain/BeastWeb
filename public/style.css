@@ -1,0 +1,95 @@
+body{
+    background-color: #009688;
+}
+.card-cust {
+    height: 550px;
+    width: 550px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translate(-50%,-50%);
+
+    border-radius: 2px;
+    background: #bdbdbd;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.card-cust:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+}
+
+.box-big {
+    height: 182px;
+    width: 182px;
+
+    float: left;
+
+    background: #bdbdbd;
+}
+.box-small {
+    height: 60px;
+    width: 60px;
+
+    float: left;
+
+    background-color: #fff;
+    cursor: pointer;
+}
+.centr {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+.centr.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cleft.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cright.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cen {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+.lef.mids {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.ri8.mids {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.cen.mids {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.gplay {
+    height: 90px;
+    width: 240px;
+}
+.xo-img{
+    height: 60px;
+    width: 60px;
+}
+.center-page{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translate(-50%,-50%);
+}
