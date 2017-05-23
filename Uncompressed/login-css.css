@@ -1,0 +1,20 @@
+.logo {
+    /*margin-top: 8px;*/
+    width: 24px;
+    height: 24px;
+    top: 30%;
+}
+.btn {
+    text-transform: none;
+    width: 100%;
+    font-size: 18px;
+}
+#scard {
+    /*width: 450px;*/
+    /*position: absolute;*/
+    /*top: 20%;*/
+    /*margin: auto;*/
+}
+.col{
+    margin-bottom: 20px;
+}

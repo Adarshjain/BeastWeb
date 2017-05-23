@@ -1,148 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#212121">
-    <link rel="icon" sizes="192x192" href="asset/xwin.jpg">
-    <title>Beast</title>
-</head>
-
-<body>
-    <img src="asset/x.jpg" alt="" class="hide"><img src="asset/o.jpg" alt="" class="hide">
-    <div class="card-turn">
-        <p id="curr-player">X's Turn</p>
-    </div>
-    <div class="card-cust">
-        <div class="box-big lef tops" id="bb0">
-            <div class="above hide" id="b0"></div>
-            <div id="0" class="box-small cleft ctop"></div>
-            <div id="1" class="box-small centr ctop"></div>
-            <div id="2" class="box-small cright ctop"></div>
-            <div id="3" class="box-small cleft mid"></div>
-            <div id="4" class="box-small centr mid"></div>
-            <div id="5" class="box-small cright mid"></div>
-            <div id="6" class="box-small cleft bot"></div>
-            <div id="7" class="box-small centr bot"></div>
-            <div id="8" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big cen tops" id="bb1">
-            <div class="above hide ol1" id="b1"></div>
-            <div id="9" class="box-small cleft ctop"></div>
-            <div id="10" class="box-small centr ctop"></div>
-            <div id="11" class="box-small cright ctop"></div>
-            <div id="12" class="box-small cleft mid"></div>
-            <div id="13" class="box-small centr mid"></div>
-            <div id="14" class="box-small cright mid"></div>
-            <div id="15" class="box-small cleft bot"></div>
-            <div id="16" class="box-small centr bot"></div>
-            <div id="17" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big ri8 tops" id="bb2">
-            <div class="above hide ol2" id="b2"></div>
-            <div id="18" class="box-small cleft ctop"></div>
-            <div id="19" class="box-small centr ctop"></div>
-            <div id="20" class="box-small cright ctop"></div>
-            <div id="21" class="box-small cleft mid"></div>
-            <div id="22" class="box-small centr mid"></div>
-            <div id="23" class="box-small cright mid"></div>
-            <div id="24" class="box-small cleft bot"></div>
-            <div id="25" class="box-small centr bot"></div>
-            <div id="26" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big lef mids" id="bb3">
-            <div class="above hide ot1" id="b3"></div>
-            <div id="27" class="box-small cleft ctop"></div>
-            <div id="28" class="box-small centr ctop"></div>
-            <div id="29" class="box-small cright ctop"></div>
-            <div id="30" class="box-small cleft mid"></div>
-            <div id="31" class="box-small centr mid"></div>
-            <div id="32" class="box-small cright mid"></div>
-            <div id="33" class="box-small cleft bot"></div>
-            <div id="34" class="box-small centr bot"></div>
-            <div id="35" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big cen mids" id="bb4">
-            <div class="above hide ot1 ol1" id="b4"></div>
-            <div id="36" class="box-small cleft ctop"></div>
-            <div id="37" class="box-small centr ctop"></div>
-            <div id="38" class="box-small cright ctop"></div>
-            <div id="39" class="box-small cleft mid"></div>
-            <div id="40" class="box-small centr mid"></div>
-            <div id="41" class="box-small cright mid"></div>
-            <div id="42" class="box-small cleft bot"></div>
-            <div id="43" class="box-small centr bot"></div>
-            <div id="44" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big ri8 mids" id="bb5">
-            <div class="above hide ol2 ot1" id="b5"></div>
-            <div id="45" class="box-small cleft ctop"></div>
-            <div id="46" class="box-small centr ctop"></div>
-            <div id="47" class="box-small cright ctop"></div>
-            <div id="48" class="box-small cleft mid"></div>
-            <div id="49" class="box-small centr mid"></div>
-            <div id="50" class="box-small cright mid"></div>
-            <div id="51" class="box-small cleft bot"></div>
-            <div id="52" class="box-small centr bot"></div>
-            <div id="53" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big lef ri8s" id="bb6">
-            <div class="above hide ot2" id="b6"></div>
-            <div id="54" class="box-small cleft ctop"></div>
-            <div id="55" class="box-small centr ctop"></div>
-            <div id="56" class="box-small cright ctop"></div>
-            <div id="57" class="box-small cleft mid"></div>
-            <div id="58" class="box-small centr mid"></div>
-            <div id="59" class="box-small cright mid"></div>
-            <div id="60" class="box-small cleft bot"></div>
-            <div id="61" class="box-small centr bot"></div>
-            <div id="62" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big cen ri8s" id="bb7">
-            <div class="above hide ot2 ol1" id="b7"></div>
-            <div id="63" class="box-small cleft ctop"></div>
-            <div id="64" class="box-small centr ctop"></div>
-            <div id="65" class="box-small cright ctop"></div>
-            <div id="66" class="box-small cleft mid"></div>
-            <div id="67" class="box-small centr mid"></div>
-            <div id="68" class="box-small cright mid"></div>
-            <div id="69" class="box-small cleft bot"></div>
-            <div id="70" class="box-small centr bot"></div>
-            <div id="71" class="box-small cright bot"></div>
-        </div>
-        <div class="box-big ri8 ri8s" id="bb8">
-            <div class="above hide ol2 ot2" id="b8"></div>
-            <div id="72" class="box-small cleft ctop"></div>
-            <div id="73" class="box-small centr ctop"></div>
-            <div id="74" class="box-small cright ctop"></div>
-            <div id="75" class="box-small cleft mid"></div>
-            <div id="76" class="box-small centr mid"></div>
-            <div id="77" class="box-small cright mid"></div>
-            <div id="78" class="box-small cleft bot"></div>
-            <div id="79" class="box-small centr bot"></div>
-            <div id="80" class="box-small cright bot"></div>
-        </div>
-    </div>
-    <div class="playstore">
-        <a href="https://drive.google.com/open?id=0B6MUkmnH7Pm3MmNWOU0xVm5oMkU" target="_blank">
-            <img src="asset/google-play-badge.png" class="gplay" alt="Google Play store"></a><img>
-        </a>
-    </div>
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <h4>Game Over</h4>
-            <p id="won-player"></p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
-        </div>
-    </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="custom-js/myjs.js"></script>
-</body>
-
-</html>
+<script type='text/javascript'>
+<!--
+var s="=EPDUZQF!iunm?=iunm?=ifbe?!!!!=mjol!isfg>#iuuqt;00gpout/hpphmfbqjt/dpn0jdpo@gbnjmz>Nbufsjbm,Jdpot#!sfm>#tuzmftiffu#?!!!!=mjol!uzqf>#ufyu0dtt#!sfm>#tuzmftiffu#!isfg>#nbufsjbmj{f0dtt0nbufsjbmj{f/njo/dtt#!nfejb>#tdsffo-qspkfdujpo#!0?!!!!=mjol!sfm>#tuzmftiffu#!uzqf>#ufyu0dtt#!isfg>#tuzmf/dtt#?!!!!=nfub!obnf>#wjfxqpsu#!dpoufou>#xjeui>efwjdf.xjeui-!jojujbm.tdbmf>2/1#!0?!!!!=nfub!obnf>#uifnf.dpmps#!dpoufou>#$323232#?!!!!=mjol!sfm>#jdpo#!tj{ft>#2:3y2:3#!isfg>#bttfu0yxjo/kqh#?!!!!=ujumf?Cfbtu=0ujumf?=0ifbe?=cpez?!!!!=jnh!tsd>#bttfu0y/kqh#!bmu>##!dmbtt>#ijef#?=jnh!tsd>#bttfu0p/kqh#!bmu>##!dmbtt>#ijef#?!!!!=jnh!tsd>#bttfu0y.nfhb/kqh#!bmu>##!dmbtt>#ijef#?=jnh!tsd>#bttfu0p.nfhb/kqh#!bmu>##!dmbtt>#ijef#?!!!!=jnh!tsd>#bttfu0yxjo/kqh#!bmu>##!dmbtt>#ijef#?=jnh!tsd>#bttfu0pxjo/kqh#!bmu>##!dmbtt>#ijef#?!!!!=jnh!tsd>#bttfu0yxjo.nfhb/kqh#!bmu>##!dmbtt>#ijef#?=jnh!tsd>#bttfu0pxjo.nfhb/kqh#!bmu>##!dmbtt>#ijef#?!!!!=jnh!tsd>#bttfu0esbx/kqh#!bmu>##!dmbtt>#ijef#?!!!!=ejw!dmbtt>#dbse.uvso#?!!!!!!!!=q!je>#dvss.qmbzfs#?Y(t!Uvso=0q?!!!!=0ejw?!!!!=ejw!dmbtt>#dbse.dvtu#?!!!!!!!!=ejw!dmbtt>#cpy.cjh!mfg!upqt#!je>#cc1#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef#!je>#c1#?=0ejw?!!!!!!!!!!!!=ejw!je>#1#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#2#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#3#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#4#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#5#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#6#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#7#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#8#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#9#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!dfo!upqt#!je>#cc2#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pm2#!je>#c2#?=0ejw?!!!!!!!!!!!!=ejw!je>#:#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#21#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#22#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#23#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#24#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#25#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#26#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#27#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#28#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!sj9!upqt#!je>#cc3#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pm3#!je>#c3#?=0ejw?!!!!!!!!!!!!=ejw!je>#29#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#2:#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#31#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#32#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#33#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#34#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#35#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#36#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#37#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!mfg!njet#!je>#cc4#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pu2#!je>#c4#?=0ejw?!!!!!!!!!!!!=ejw!je>#38#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#39#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#3:#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#41#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#42#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#43#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#44#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#45#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#46#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!dfo!njet#!je>#cc5#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pu2!pm2#!je>#c5#?=0ejw?!!!!!!!!!!!!=ejw!je>#47#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#48#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#49#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#4:#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#51#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#52#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#53#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#54#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#55#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!sj9!njet#!je>#cc6#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pm3!pu2#!je>#c6#?=0ejw?!!!!!!!!!!!!=ejw!je>#56#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#57#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#58#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#59#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#5:#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#61#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#62#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#63#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#64#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!mfg!sj9t#!je>#cc7#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pu3#!je>#c7#?=0ejw?!!!!!!!!!!!!=ejw!je>#65#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#66#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#67#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#68#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#69#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#6:#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#71#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#72#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#73#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!dfo!sj9t#!je>#cc8#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pu3!pm2#!je>#c8#?=0ejw?!!!!!!!!!!!!=ejw!je>#74#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#75#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#76#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#77#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#78#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#79#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#7:#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#81#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#82#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#cpy.cjh!sj9!sj9t#!je>#cc9#?!!!!!!!!!!!!=ejw!dmbtt>#bcpwf!ijef!pm3!pu3#!je>#c9#?=0ejw?!!!!!!!!!!!!=ejw!je>#83#!dmbtt>#cpy.tnbmm!dmfgu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#84#!dmbtt>#cpy.tnbmm!dfous!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#85#!dmbtt>#cpy.tnbmm!dsjhiu!dupq#?=0ejw?!!!!!!!!!!!!=ejw!je>#86#!dmbtt>#cpy.tnbmm!dmfgu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#87#!dmbtt>#cpy.tnbmm!dfous!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#88#!dmbtt>#cpy.tnbmm!dsjhiu!nje#?=0ejw?!!!!!!!!!!!!=ejw!je>#89#!dmbtt>#cpy.tnbmm!dmfgu!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#8:#!dmbtt>#cpy.tnbmm!dfous!cpu#?=0ejw?!!!!!!!!!!!!=ejw!je>#91#!dmbtt>#cpy.tnbmm!dsjhiu!cpu#?=0ejw?!!!!!!!!=0ejw?!!!!=0ejw?!!!!=ejw!dmbtt>#qmbztupsf#?!!!!!!!!=b!isfg>#iuuqt;00esjwf/hpphmf/dpn0pqfo@je>1C7NVlnoI8Qn4NnOXPV1yWn6pNlV#!ubshfu>#`cmbol#?!!!!!!!!!!!!=jnh!tsd>#bttfu0hpphmf.qmbz.cbehf/qoh#!dmbtt>#hqmbz#!bmu>#Hpphmf!Qmbz!tupsf#?=0b?=jnh?!!!!!!!!=0b?!!!!=0ejw?!!!!=ejw!je>#npebm3#!dmbtt>#npebm#?!!!!!!!!=ejw!dmbtt>#npebm.dpoufou#?!!!!!!!!!!!!=i5?Hbnf!Pwfs=0i5?!!!!!!!!!!!!=q!je>#xpo.qmbzfs#?=0q?!!!!!!!!=0ejw?!!!!!!!!=ejw!dmbtt>#npebm.gppufs#?!!!!!!!!!!!!=b!isfg>#$#!dmbtt>#!npebm.bdujpo!npebm.dmptf!xbwft.fggfdu!xbwft.hsffo!cuo.gmbu#?Pl=0b?!!!!!!!!=0ejw?!!!!=0ejw?!!!!=tdsjqu!uzqf>#ufyu0kbwbtdsjqu#!tsd>#iuuqt;00dpef/krvfsz/dpn0krvfsz.3/2/2/njo/kt#?=0tdsjqu?!!!!=tdsjqu!uzqf>#ufyu0kbwbtdsjqu#!tsd>#nbufsjbmj{f0kt0nbufsjbmj{f/njo/kt#?=0tdsjqu?!!!!=tdsjqu!uzqf>#ufyu0kbwbtdsjqu#!tsd>#dvtupn.kt0nzkt/kt#?=0tdsjqu?=0cpez?=0iunm?";
+m=""; for (i=0; i<s.length; i++) {  if(s.charCodeAt(i) == 28){    m+= '&';} else if (s.charCodeAt(i) == 23) {     m+= '!';} else {    m+=String.fromCharCode(s.charCodeAt(i)-1);    }}document.write(m);//-->
+</script>

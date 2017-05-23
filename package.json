@@ -1,0 +1,38 @@
+{
+  "name": "beast",
+  "version": "1.0.0",
+  "description": "Tic Tac Toe Beast",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "firebase": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adarshjain/BeastWeb.git"
+  },
+  "keywords": [
+    "beast",
+    "tictactoe",
+    "tic",
+    "tac",
+    "toe",
+    "xo",
+    "android",
+    "web"
+  ],
+  "author": "Adarsh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adarshjain/BeastWeb/issues"
+  },
+  "homepage": "https://github.com/Adarshjain/BeastWeb#readme"
+}
