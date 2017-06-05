@@ -1,1 +1,318 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('$(k(){$(".F").1C(\'1D\',k(){1l.1j(\'1L 1N 1G 1E!\',1H)});$(\'.Y\').Y();1o()});j h=0;j d=[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,];j c=[2,2,2,2,2,2,2,2,2];j 17=[0,0,0,0,0,0,0,0,0];j Q=0;k 1o(){$(".1K-1I").1C(\'1D\',k(){e(!$(I).1J(\'D\')){d[$(I).1z(\'1x\')]=h;j L=$(I).1z(\'1x\');j R=19(L);17[R]+=1;e(h==0){$(I).q(\'<f t="r/x.n" p="m-f"></f>\');1d(L,R);h=1;$(\'#1r-h\').S("O\'s 1k")}g e(h==1){$(I).q(\'<f t="r/o.n" p="m-f"></f>\');1d(L,R);h=0;$(\'#1r-h\').S("X\'s 1k")}10(1i(L));$(I).w(\'D\');1g()}g{1l.1j(\'1M 1O\',1F)}})}k 1d(l,11){j a=1v(l);e(d[a]==d[a+1]&&d[a+1]==d[a+2]&&!(d[a]==2)){z(a,a+1,a+2,l)}g e(d[a+3]==d[a+4]&&d[a+4]==d[a+5]&&!(d[a+3]==2)){z(a+3,a+4,a+5,l)}g e(d[a+6]==d[a+7]&&d[a+7]==d[a+8]&&!(d[a+6]==2)){z(a+6,a+7,a+8,l)}g e(d[a]==d[a+3]&&d[a+3]==d[a+6]&&!(d[a]==2)){z(a,a+3,a+6,l)}g e(d[a+1]==d[a+4]&&d[a+4]==d[a+7]&&!(d[a+1]==2)){z(a+1,a+4,a+7,l)}g e(d[a+2]==d[a+5]&&d[a+5]==d[a+8]&&!(d[a+2]==2)){z(a+2,a+5,a+8,l)}g e(d[a]==d[a+4]&&d[a+4]==d[a+8]&&!(d[a]==2)){z(a,a+4,a+8,l)}g e(d[a+2]==d[a+4]&&d[a+4]==d[a+6]&&!(d[a+2]==2)){z(a+2,a+4,a+6,l)}g e(17[11]==9){$("#b"+11).B().u(\'C\').q(\'<f t="r/1R.n" K="" p="F m-f-v D">\');c[11]=3;++Q}}k z(Z,W,V,l){15=19(l);e(h==0){f="1B";A="x-v"}g e(h==1){f="1p";A="o-v"}$("#"+Z).B().q(\'<f t="r/\'+f+\'.n" p="m-f"></f>\');$("#"+W).B().q(\'<f t="r/\'+f+\'.n" p="m-f"></f>\');$("#"+V).B().q(\'<f t="r/\'+f+\'.n" p="m-f"></f>\');$("#b"+15).B().u(\'C\').q(\'<f t="r/\'+A+\'.n" K="" p="F m-f-v D">\');c[15]=h;++Q}k 1i(E){12 E-1a.1b(E/9)*9}k 10(H){e(H==9){G(j i=0;i<9;i++){$(\'#b\'+i).u(\'C\')}}g{13=H*9;G(j i=0;i<1h;i++){$(\'#\'+i).P("M-N","#1W")}e(c[H]!=2){G(j i=0;i<9;i++){e(c[i]==2){$(\'#b\'+i).w(\'C\')}}j T=0;G(j i=0;i<1h;i++){e(c[T]!=2){i+=8;T++;1T}e(h==0){$(\'#\'+i).P("M-N","#1m")}g e(h==1){$(\'#\'+i).P("M-N","#1f")}e((i+1)%9==0){T++}}}g{G(j i=0;i<9;i++){e(c[i]==2){$(\'#b\'+i).u(\'C\')}}G(j i=13;i<13+9;i++){e(h==0){$(\'#\'+i).P("M-N","#1m")}g e(h==1){$(\'#\'+i).P("M-N","#1f")}}}e(c[H]==2){$(\'#b\'+H).w(\'C\')}}}k 1g(){e(c[0]==c[1]&&c[1]==c[2]&&!(c[0]==2)&&!(c[0]==3)){y(0,1,2)}g e(c[3]==c[4]&&c[4]==c[5]&&!(c[3]==2)&&!(c[3]==3)){y(3,4,5)}g e(c[6]==c[7]&&c[7]==c[8]&&!(c[6]==2)&&!(c[6]==3)){y(6,7,8)}g e(c[0]==c[3]&&c[3]==c[6]&&!(c[0]==2)&&!(c[0]==3)){y(0,3,6)}g e(c[1]==c[4]&&c[4]==c[7]&&!(c[1]==2)&&!(c[1]==3)){y(1,4,7)}g e(c[2]==c[5]&&c[5]==c[8]&&!(c[2]==2)&&!(c[2]==3)){y(2,5,8)}g e(c[0]==c[4]&&c[4]==c[8]&&!(c[0]==2)&&!(c[0]==3)){y(0,4,8)}g e(c[2]==c[4]&&c[4]==c[6]&&!(c[2]==2)&&!(c[2]==3)){y(2,4,6)}g e(Q==9){10(9);$(\'#U-h\').S("1Q 1P!");$(\'#1t\').Y(\'1q\')}}k y(Z,W,V){e(h==1){A="1B-v";16="X U!"}g e(h==0){A="1p-v";16="O U!"}$("#b"+Z).B().q(\'<f t="r/\'+A+\'.n" K="" p="F m-f-v D">\');$("#b"+W).B().q(\'<f t="r/\'+A+\'.n" K="" p="F m-f-v D">\');$("#b"+V).B().q(\'<f t="r/\'+A+\'.n" K="" p="F m-f-v D">\');10(9);$(\'#U-h\').S(16);$(\'#1t\').Y(\'1q\')}k 1v(E){1A=1a.1b(E/9)*9;12 1A}k 19(E){12 1a.1b(E/9)}k 1S(){$(".1e").u("18").w("J").w("J-14");j $1c=$(1V).1s();e((1u.1U>1u.1s)||$1c<1w){$(".1n-1y").w(\'C\');$(".1e").u("18").w("J").w("J-14")}e($1c>=1w){$(".1n-1y").u(\'C\');$(".1e").w("18").u("J").u("J-14")}}',62,121,'||||||||||min||big|matrix|if|img|else|player||var|function|currentSmall|xo|jpg||class|append|asset||src|removeClass|mega|addClass||dispBig|dispWin|imgw|empty|hide|done|val|above|for|position|this|center|alt|currPos|background|color||css|megacount|cBigPos|text|bigCount|won|po3|po2||modal|po1|block|currBigPos|return|minipos|page|bigPos|wonPlayer|minicount|right|getBig|Math|floor|containerWidth|checkSmall|playstore|FFEBEE|checkBig|81|nextBigPos|toast|Turn|Materialize|BBDEFB|card|playGame|owin|open|curr|width|modal2|screen|getMinMax|570|id|cust|attr|pos|xwin|on|click|there|1000|play|1500|small|hasClass|box|You|Already|cannot|Clicked|Draw|Game|draw|updateContainer|continue|height|window|FFF'.split('|'),0,{}))
+var database = firebase.database();
+var readRef = database.ref('curBoard/1324');
+var player = 0;
+var matrix = [ //Player spot in every small box, whether X or O or not played --> 0->X, 1->O, 2->Nothing yet
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+    2, 2, 2, 2, 2, 2, 2, 2, 2,
+];
+var big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
+    2, 2, 2,
+    2, 2, 2,
+    2, 2, 2
+];
+var minicount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Maintianing number of spots played (Used to check 'Draw' condition)
+var megacount = 0; //Used for checking 'Draw' condition for whole mega box
+var pl, currCpos;
+//matrix,player,big,minicount,megacount
+$('#currplayx').click(function(event) {
+    pl = 0;
+});
+$('#currplayo').click(function(event) {
+    pl = 1;
+});
+$(function() {
+    // $(".playstore").removeClass("right").addClass("center-page").removeClass('visi');
+    // updateContainer();
+    // $(window).resize(function() {
+    //     updateContainer();
+    // });
+
+    $('.modal').modal(); //Materailizecss dialog box
+});
+$(".above").on('click', function() {
+    Materialize.toast('You cannot play there!', 1500);
+});
+
+$(".box-small").on('click', function() {
+    if(!$(this).hasClass('done')) {
+        matrix[$(this).attr('id')] = player;
+        var currPos = $(this).attr('id');
+        var cBigPos = getBig(currPos);
+        minicount[cBigPos] += 1;
+        writeData(player, currPos);
+        if(player == 0) {
+            $(this).append('<img src="asset/x.jpg" class="xo-img"></img>');
+            checkSmall(currPos, cBigPos);
+            player = 1;
+        } else if(player == 1) {
+            $(this).append('<img src="asset/o.jpg" class="xo-img"></img>');
+            checkSmall(currPos, cBigPos);
+            player = 0;
+        }
+        block(nextBigPos(currPos));
+        $(this).addClass('done');
+    } else {
+        Materialize.toast('Already Clicked', 1000);
+    }
+});
+
+
+function checkSmall(currentSmall, currBigPos) {
+    var min = getMinMax(currentSmall);
+    if(matrix[min] == matrix[min + 1] && matrix[min + 1] == matrix[min + 2] && !(matrix[min] == 2)) {
+        dispWin(min, min + 1, min + 2, currBigPos);
+    } else if(matrix[min + 3] == matrix[min + 4] && matrix[min + 4] == matrix[min + 5] && !(matrix[min + 3] == 2)) {
+        dispWin(min + 3, min + 4, min + 5, currBigPos);
+    } else if(matrix[min + 6] == matrix[min + 7] && matrix[min + 7] == matrix[min + 8] && !(matrix[min + 6] == 2)) {
+        dispWin(min + 6, min + 7, min + 8, currBigPos);
+    } else if(matrix[min] == matrix[min + 3] && matrix[min + 3] == matrix[min + 6] && !(matrix[min] == 2)) {
+        dispWin(min, min + 3, min + 6, currBigPos);
+    } else if(matrix[min + 1] == matrix[min + 4] && matrix[min + 4] == matrix[min + 7] && !(matrix[min + 1] == 2)) {
+        dispWin(min + 1, min + 4, min + 7, currBigPos);
+    } else if(matrix[min + 2] == matrix[min + 5] && matrix[min + 5] == matrix[min + 8] && !(matrix[min + 2] == 2)) {
+        dispWin(min + 2, min + 5, min + 8, currBigPos);
+    } else if(matrix[min] == matrix[min + 4] && matrix[min + 4] == matrix[min + 8] && !(matrix[min] == 2)) {
+        dispWin(min, min + 4, min + 8, currBigPos);
+    } else if(matrix[min + 2] == matrix[min + 4] && matrix[min + 4] == matrix[min + 6] && !(matrix[min + 2] == 2)) {
+        dispWin(min + 2, min + 4, min + 6, currBigPos);
+    } else if(minicount[currBigPos] == 9) {
+        $("#b" + currBigPos).empty().removeClass('visi').append('<img src="asset/draw.jpg" alt="" class="above xo-img-mega">');
+        big[currBigPos] = 3;
+        ++megacount;
+    }
+}
+
+function dispWin(po1, po2, po3, cBPos) {
+    if(player == 0) {
+        img = "xwin";
+        imgw = "x-mega";
+    } else if(player == 1) {
+        img = "owin";
+        imgw = "o-mega";
+    }
+    $("#" + po1).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
+    $("#" + po2).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
+    $("#" + po3).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
+    $("#b" + cBPos).empty().removeClass('visi').append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
+    big[cBPos] = player;
+    ++megacount;
+    checkBig();
+}
+
+function nextBigPos(val) {
+    return val - Math.floor(val / 9) * 9;
+}
+
+function block(position) {
+    if(position == 9) {
+        for(var i = 0; i < 9; i++) {
+            $('#b' + i).removeClass('visi');
+        }
+        for(var i = 0; i < 81; i++) {
+            $('#' + i).css("background-color", "#FFF");
+        }
+    } else {
+        minipos = position * 9;
+        for(var i = 0; i < 81; i++) {
+            $('#' + i).css("background-color", "#FFF");
+        }
+        if(big[position] != 2) { // Open choice condition
+            //Block all - reset
+            for(var i = 0; i < 9; i++) {
+                if(big[i] == 2) {
+                    $('#b' + i).addClass('visi');
+                }
+            }
+            //Color setting for open choice
+            var bigCount = 0;
+            for(var i = 0; i < 81; i++) {
+                if(big[bigCount] != 2) {
+                    i += 8;
+                    bigCount++;
+                    continue;
+                }
+                if(player == 0) {
+                    $('#' + i).css("background-color", "#BBDEFB");
+                } else if(player == 1) {
+                    $('#' + i).css("background-color", "#FFCCBC");
+                }
+
+                if((i + 1) % 9 == 0) {
+                    bigCount++;
+                }
+            }
+        } else { //Closed specific big box
+            for(var i = 0; i < 9; i++) {
+                if(big[i] == 2) {
+                    $('#b' + i).removeClass('visi');
+                }
+            }
+            for(var i = minipos; i < minipos + 9; i++) {
+                if(player == 0) {
+                    $('#' + i).css("background-color", "#BBDEFB");
+                } else if(player == 1) {
+                    $('#' + i).css("background-color", "#FFCCBC");
+                }
+
+            }
+            $('#b' + position).addClass('visi');
+        }
+    }
+}
+
+function checkBig() {
+    if(big[0] == big[1] && big[1] == big[2] && !(big[0] == 2) && !(big[0] == 3)) {
+        dispBig(0, 1, 2);
+    } else if(big[3] == big[4] && big[4] == big[5] && !(big[3] == 2) && !(big[3] == 3)) {
+        dispBig(3, 4, 5);
+    } else if(big[6] == big[7] && big[7] == big[8] && !(big[6] == 2) && !(big[6] == 3)) {
+        dispBig(6, 7, 8);
+    } else if(big[0] == big[3] && big[3] == big[6] && !(big[0] == 2) && !(big[0] == 3)) {
+        dispBig(0, 3, 6);
+    } else if(big[1] == big[4] && big[4] == big[7] && !(big[1] == 2) && !(big[1] == 3)) {
+        dispBig(1, 4, 7);
+    } else if(big[2] == big[5] && big[5] == big[8] && !(big[2] == 2) && !(big[2] == 3)) {
+        dispBig(2, 5, 8);
+    } else if(big[0] == big[4] && big[4] == big[8] && !(big[0] == 2) && !(big[0] == 3)) {
+        dispBig(0, 4, 8);
+    } else if(big[2] == big[4] && big[4] == big[6] && !(big[2] == 2) && !(big[2] == 3)) {
+        dispBig(2, 4, 6);
+    } else if(megacount == 9) {
+        block(9);
+        $('#won-player').text("Game Draw!");
+        $('#modal2').modal('open');
+    }
+}
+
+function dispBig(po1, po2, po3) {
+    if(player == 1) {
+        imgw = "xwin-mega";
+        wonPlayer = "X won!";
+    } else if(player == 0) {
+        imgw = "owin-mega";
+        wonPlayer = "O won!";
+    }
+    $("#b" + po1).empty().append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
+    $("#b" + po2).empty().append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
+    $("#b" + po3).empty().append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
+    block(9);
+    $('#won-player').text(wonPlayer);
+    $('#modal2').modal('open');
+}
+
+function getMinMax(val) {
+    return Math.floor(val / 9) * 9;
+}
+
+function getBig(val) {
+    return Math.floor(val / 9);
+}
+
+function updateContainer() {
+    var $containerWidth = $(window).width();
+    if($containerWidth < 1050) {
+
+        if((screen.height > screen.width) || $containerWidth < 570) {
+            $(".card-cust").addClass('visi');
+            $(".playstore").removeClass("right").addClass("center-page").removeClass('visi');
+        } else if($containerWidth >= 570) {
+            $(".card-cust").removeClass('visi');
+            $(".playstore").addClass("right").removeClass("center-page").addClass('visi');
+        }
+        $('.playstore').addClass('visi');
+    } else {
+        // if ($containerWidth >= 570) {
+        //     $(".card-cust").removeClass('visi');
+        $(".playstore").addClass("right").removeClass("center-page").addClass('visi');
+        // }
+        // $('.playstore').removeClass('visi');
+    }
+}
+
+$('#logout').click(function(event) {
+    firebase.auth().signOut();
+    window.location.replace("/logout");
+});
+
+readRef.on('value', function(snap) {
+    if(snap.val() == null) {
+        console.log('Not yet played');
+        currXpos = "";
+        currOpos = "";
+        currBpos = "";
+    } else {
+        currXpos = snap.val().xpos;
+        currOpos = snap.val().opos;
+        currCpos = snap.val().cpos;
+        minicountString = snap.val().minicount;
+        minicount = minicountString.split(',');
+        megacount = snap.val().megacount;
+        player = snap.val().cplayer;
+        big = snap.val().big;
+        xpStr = snap.val().xpos;
+        opStr = snap.val().opos;
+        setMatrix(xpStr.split(','), opStr.split(','));
+        setimgs();
+        sync();
+        // console.log('X: ' + currXpos + ', O: ' + currOpos + ', B:' + currBpos);
+        console.log(player);
+    }
+});
+
+
+function writeData(play, cpos) {
+    if(play == 0) {
+        currXpos = currXpos + ',' + cpos;
+        play = 1;
+    } else {
+        currOpos = currOpos + ',' + cpos;
+        play = 0;
+    }
+    database.ref('curBoard/1324').set({
+        cplayer: play,
+        xpos: currXpos,
+        opos: currOpos,
+        cpos: cpos,
+        minicount: minicount.toString(),
+        megacount: megacount,
+        big: big.toString()
+    });
+}
+
+
+function setMatrix(xp, op) {
+    matrix.fill(2);
+    for(var i = 1; i < xp.length; i++) {
+        matrix[xp[i]] = 0;
+    }
+    for(var i = 1; i < op.length; i++) {
+        matrix[op[i]] = 1;
+    }
+    // console.log(matrix);
+}
+
+function setimgs() {
+    for(var i = 0; i < matrix.length; i++) {
+        if(matrix[i] == 0) {
+            $('#' + i).empty().append('<img src="asset/x.jpg" class="xo-img"></img>');
+        }
+        if(matrix[i] == 1) {
+            $('#' + i).empty().append('<img src="asset/o.jpg" class="xo-img"></img>');
+        }
+    }
+}
+
+function sync() {
+    if(player != pl) {
+        block(9);
+    } else {
+        block(nextBigPos(currCPos));
+    }
+}

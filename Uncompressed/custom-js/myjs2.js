@@ -1,40 +1,53 @@
+block(9);
+firebase.auth().signInAnonymously().then(function(argument) {
+        // setCookie('anon');
+        console.log('logged in');
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+        console.log(error);
+    });
 var database = firebase.database();
 var readRef = database.ref('curBoard/1324');
-var player = 0;
+var big, minicount, megacount, player, currPos, cplayer, currXpos = "",
+    currOpos = "",
+    currCpos;
 var matrix = [ //Player spot in every small box, whether X or O or not played --> 0->X, 1->O, 2->Nothing yet
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-    2, 2, 2, 2, 2, 2, 2, 2, 2,
-];
-var big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
-    2, 2, 2,
-    2, 2, 2,
-    2, 2, 2
-];
-var minicount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Maintianing number of spots played (Used to check 'Draw' condition)
-var megacount = 0; //Used for checking 'Draw' condition for whole mega box
-var pl, currCpos;
-//matrix,player,big,minicount,megacount
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2,
+    ];
+
+function init() {
+    big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
+        2, 2, 2,
+        2, 2, 2,
+        2, 2, 2
+    ];
+    minicount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Maintianing number of spots played (Used to check 'Draw' condition)
+    megacount = 0;
+    currXpos = "";
+    currOpos = "";
+    currCpos = "";
+    $('.box-small').removeClass('done').empty();
+    $('.above').addClass('visi').empty();
+}
 $('#currplayx').click(function(event) {
-    pl = 0;
+    player = 0;
 });
 $('#currplayo').click(function(event) {
-    pl = 1;
+    player = 1;
 });
 $(function() {
-    // $(".playstore").removeClass("right").addClass("center-page").removeClass('visi');
-    // updateContainer();
-    // $(window).resize(function() {
-    //     updateContainer();
-    // });
-
     $('.modal').modal(); //Materailizecss dialog box
+    $('#modal2').modal('open');
 });
 $(".above").on('click', function() {
     Materialize.toast('You cannot play there!', 1500);
@@ -43,18 +56,16 @@ $(".above").on('click', function() {
 $(".box-small").on('click', function() {
     if(!$(this).hasClass('done')) {
         matrix[$(this).attr('id')] = player;
-        var currPos = $(this).attr('id');
+        currPos = $(this).attr('id');
         var cBigPos = getBig(currPos);
         minicount[cBigPos] += 1;
         writeData(player, currPos);
         if(player == 0) {
             $(this).append('<img src="asset/x.jpg" class="xo-img"></img>');
-            checkSmall(currPos, cBigPos);
-            player = 1;
+            checkSmall(currPos, cBigPos, false);
         } else if(player == 1) {
             $(this).append('<img src="asset/o.jpg" class="xo-img"></img>');
-            checkSmall(currPos, cBigPos);
-            player = 0;
+            checkSmall(currPos, cBigPos, false);
         }
         block(nextBigPos(currPos));
         $(this).addClass('done');
@@ -63,60 +74,72 @@ $(".box-small").on('click', function() {
     }
 });
 
-
-function checkSmall(currentSmall, currBigPos) {
+function checkSmall(currentSmall, currBigPos, update) {
     var min = getMinMax(currentSmall);
     if(matrix[min] == matrix[min + 1] && matrix[min + 1] == matrix[min + 2] && !(matrix[min] == 2)) {
-        dispWin(min, min + 1, min + 2, currBigPos);
+        dispWin(min, min + 1, min + 2, currBigPos, update);
     } else if(matrix[min + 3] == matrix[min + 4] && matrix[min + 4] == matrix[min + 5] && !(matrix[min + 3] == 2)) {
-        dispWin(min + 3, min + 4, min + 5, currBigPos);
+        dispWin(min + 3, min + 4, min + 5, currBigPos, update);
     } else if(matrix[min + 6] == matrix[min + 7] && matrix[min + 7] == matrix[min + 8] && !(matrix[min + 6] == 2)) {
-        dispWin(min + 6, min + 7, min + 8, currBigPos);
+        dispWin(min + 6, min + 7, min + 8, currBigPos, update);
     } else if(matrix[min] == matrix[min + 3] && matrix[min + 3] == matrix[min + 6] && !(matrix[min] == 2)) {
-        dispWin(min, min + 3, min + 6, currBigPos);
+        dispWin(min, min + 3, min + 6, currBigPos, update);
     } else if(matrix[min + 1] == matrix[min + 4] && matrix[min + 4] == matrix[min + 7] && !(matrix[min + 1] == 2)) {
-        dispWin(min + 1, min + 4, min + 7, currBigPos);
+        dispWin(min + 1, min + 4, min + 7, currBigPos, update);
     } else if(matrix[min + 2] == matrix[min + 5] && matrix[min + 5] == matrix[min + 8] && !(matrix[min + 2] == 2)) {
-        dispWin(min + 2, min + 5, min + 8, currBigPos);
+        dispWin(min + 2, min + 5, min + 8, currBigPos, update);
     } else if(matrix[min] == matrix[min + 4] && matrix[min + 4] == matrix[min + 8] && !(matrix[min] == 2)) {
-        dispWin(min, min + 4, min + 8, currBigPos);
+        dispWin(min, min + 4, min + 8, currBigPos, update);
     } else if(matrix[min + 2] == matrix[min + 4] && matrix[min + 4] == matrix[min + 6] && !(matrix[min + 2] == 2)) {
-        dispWin(min + 2, min + 4, min + 6, currBigPos);
+        dispWin(min + 2, min + 4, min + 6, currBigPos, update);
     } else if(minicount[currBigPos] == 9) {
         $("#b" + currBigPos).empty().removeClass('visi').append('<img src="asset/draw.jpg" alt="" class="above xo-img-mega">');
         big[currBigPos] = 3;
-        ++megacount;
+        if(!update) {
+            ++megacount;
+        }
     }
 }
 
-function dispWin(po1, po2, po3, cBPos) {
-    if(player == 0) {
+function dispWin(po1, po2, po3, cBPos, update) {
+    var pl;
+    if(cplayer == 1) {
         img = "xwin";
         imgw = "x-mega";
-    } else if(player == 1) {
+        pl = 1;
+    } else if(cplayer == 0) {
         img = "owin";
         imgw = "o-mega";
+        pl = 1;
     }
     $("#" + po1).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#" + po2).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#" + po3).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#b" + cBPos).empty().removeClass('visi').append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
-    big[cBPos] = player;
-    ++megacount;
+    big[cBPos] = pl;
+    if(!update) {
+        ++megacount;
+    }
     checkBig();
 }
 
-function nextBigPos(val) {
-    return val - Math.floor(val / 9) * 9;
+function nextBigPos(currPosVal) {
+    return currPosVal - Math.floor(currPosVal / 9) * 9;
 }
 
 function block(position) {
-    if(position == 9) {
+    if(position == 9) { //Block all
         for(var i = 0; i < 9; i++) {
             $('#b' + i).removeClass('visi');
         }
         for(var i = 0; i < 81; i++) {
             $('#' + i).css("background-color", "#FFF");
+        }
+    } else if(position == 10) { // open all for initial condition
+        for(var i = 0; i < 9; i++) {
+            if(big[i] == 2) {
+                $('#b' + i).addClass('visi');
+            }
         }
     } else {
         minipos = position * 9;
@@ -138,12 +161,15 @@ function block(position) {
                     bigCount++;
                     continue;
                 }
-                if(player == 0) {
-                    $('#' + i).css("background-color", "#BBDEFB");
-                } else if(player == 1) {
-                    $('#' + i).css("background-color", "#FFCCBC");
+                if(player == cplayer) {
+                    if(player == 0) {
+                        $('#' + i).css("background-color", "#BBDEFB");
+                    } else {
+                        $('#' + i).css("background-color", "#FFCCBC");
+                    }
+                } else {
+                    block(9);
                 }
-
                 if((i + 1) % 9 == 0) {
                     bigCount++;
                 }
@@ -155,14 +181,23 @@ function block(position) {
                 }
             }
             for(var i = minipos; i < minipos + 9; i++) {
-                if(player == 0) {
-                    $('#' + i).css("background-color", "#BBDEFB");
-                } else if(player == 1) {
-                    $('#' + i).css("background-color", "#FFCCBC");
+                if(player == cplayer) {
+                    if(player == 0) {
+                        $('#' + i).css("background-color", "#BBDEFB");
+                    } else {
+                        $('#' + i).css("background-color", "#FFCCBC");
+                    }
+                } else {
+                    block(9);
+                }
+                if((i + 1) % 9 == 0) {
+                    bigCount++;
                 }
 
             }
-            $('#b' + position).addClass('visi');
+            if(cplayer == player) {
+                $('#b' + position).addClass('visi');
+            }
         }
     }
 }
@@ -192,10 +227,10 @@ function checkBig() {
 }
 
 function dispBig(po1, po2, po3) {
-    if(player == 1) {
+    if(cplayer == 1) {
         imgw = "xwin-mega";
         wonPlayer = "X won!";
-    } else if(player == 0) {
+    } else if(cplayer == 0) {
         imgw = "owin-mega";
         wonPlayer = "O won!";
     }
@@ -205,6 +240,7 @@ function dispBig(po1, po2, po3) {
     block(9);
     $('#won-player').text(wonPlayer);
     $('#modal2').modal('open');
+    //FInal win draw condition
 }
 
 function getMinMax(val) {
@@ -215,104 +251,108 @@ function getBig(val) {
     return Math.floor(val / 9);
 }
 
-function updateContainer() {
-    var $containerWidth = $(window).width();
-    if($containerWidth < 1050) {
-
-        if((screen.height > screen.width) || $containerWidth < 570) {
-            $(".card-cust").addClass('visi');
-            $(".playstore").removeClass("right").addClass("center-page").removeClass('visi');
-        } else if($containerWidth >= 570) {
-            $(".card-cust").removeClass('visi');
-            $(".playstore").addClass("right").removeClass("center-page").addClass('visi');
-        }
-        $('.playstore').addClass('visi');
-    } else {
-        // if ($containerWidth >= 570) {
-        //     $(".card-cust").removeClass('visi');
-        $(".playstore").addClass("right").removeClass("center-page").addClass('visi');
-        // }
-        // $('.playstore').removeClass('visi');
-    }
-}
-
 $('#logout').click(function(event) {
     firebase.auth().signOut();
-    window.location.replace("/logout");
+    console.log('logged out');
+    // window.location.replace("/logout");
 });
-
-readRef.on('value', function(snap) {
-    if(snap.val() == null) {
-        console.log('Not yet played');
-        currXpos = "";
-        currOpos = "";
-        currBpos = "";
-    } else {
-        currXpos = snap.val().xpos;
-        currOpos = snap.val().opos;
-        currCpos = snap.val().cpos;
-        minicountString = snap.val().minicount;
-        minicount = minicountString.split(',');
-        megacount = snap.val().megacount;
-        player = snap.val().cplayer;
-        big = snap.val().big;
-        xpStr = snap.val().xpos;
-        opStr = snap.val().opos;
-        setMatrix(xpStr.split(','), opStr.split(','));
-        setimgs();
-        sync();
-        // console.log('X: ' + currXpos + ', O: ' + currOpos + ', B:' + currBpos);
-        console.log(player);
-    }
-});
-
 
 function writeData(play, cpos) {
     if(play == 0) {
+        // if(currXpos == "") {
+        //     currXpos = "" + cpos;
+        // } else {
         currXpos = currXpos + ',' + cpos;
+        // }
         play = 1;
+        database.ref('curBoard/1324').update({
+            cplayer: play,
+            xpos: currXpos,
+            cpos: cpos,
+            minicount: minicount.toString(),
+            megacount: megacount,
+            big: big.toString()
+        });
     } else {
+        // if(currOpos == "") {
+        //     currOpos = "" + cpos;
+        // } else {
         currOpos = currOpos + ',' + cpos;
+        // }
         play = 0;
+        database.ref('curBoard/1324').update({
+            cplayer: play,
+            opos: currOpos,
+            cpos: cpos,
+            minicount: minicount.toString(),
+            megacount: megacount,
+            big: big.toString()
+        });
     }
-    database.ref('curBoard/1324').set({
-        cplayer: play,
-        xpos: currXpos,
-        opos: currOpos,
-        cpos: cpos,
-        minicount: minicount.toString(),
-        megacount: megacount,
-        big: big.toString()
-    });
 }
 
+readRef.on('value', function(snap) {
+    if(snap.val() == null) {
+        init();
+        if(player == 0) {
+            block(10);
+        } else {
+            block(9);
+        }
+        database.ref('curBoard/1324').set({
+            cplayer: 0,
+            xpos: "",
+            opos: "",
+            cpos: "",
+            minicount: minicount.toString(),
+            megacount: megacount,
+            big: big.toString()
+        });
+        alert('Start');
+    } else {
+        cplayer = snap.val().cplayer;
+        totXpos = snap.val().xpos;
+        totOpos = snap.val().opos;
+        console.log(player);
+        currCpos = snap.val().cpos;
+        minicountString = snap.val().minicount;
+        minicount = minicountString.split(',').map(Number);
+        megacount = snap.val().megacount;
+        bigStr = snap.val().big;
+        big = bigStr.split(',').map(Number);
+        xpStr = snap.val().xpos;
+        opStr = snap.val().opos;
+        setMatrix(xpStr.split(',').map(Number), opStr.split(',').map(Number));
+        sync();
+    }
+});
 
 function setMatrix(xp, op) {
     matrix.fill(2);
     for(var i = 1; i < xp.length; i++) {
         matrix[xp[i]] = 0;
+        $('#' + xp[i]).removeClass('done').addClass('done');
+        $('#' + xp[i]).empty().append('<img src="asset/x.jpg" class="xo-img"></img>');
     }
     for(var i = 1; i < op.length; i++) {
         matrix[op[i]] = 1;
-    }
-    // console.log(matrix);
-}
-
-function setimgs() {
-    for(var i = 0; i < matrix.length; i++) {
-        if(matrix[i] == 0) {
-            $('#' + i).empty().append('<img src="asset/x.jpg" class="xo-img"></img>');
-        }
-        if(matrix[i] == 1) {
-            $('#' + i).empty().append('<img src="asset/o.jpg" class="xo-img"></img>');
-        }
+        $('#' + op[i]).removeClass('done').addClass('done');
+        $('#' + op[i]).empty().append('<img src="asset/o.jpg" class="xo-img"></img>');
     }
 }
 
 function sync() {
-    if(player != pl) {
+    if(cplayer != player) {
         block(9);
     } else {
-        block(nextBigPos(currCPos));
+        if(currCpos != "") {
+            block(nextBigPos(currCpos));
+        }
+    }
+    if(currCpos != "") {
+        console.log('checking small');
+        checkSmall(currCpos, getBig(currCpos), true);
     }
 }
+
+//add class done
