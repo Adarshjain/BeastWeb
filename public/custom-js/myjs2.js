@@ -1,13 +1,13 @@
 block(9);
-firebase.auth().signInAnonymously().then(function(argument) {
-    // setCookie('anon');
-    console.log('logged in');
-}).catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    alert(errorMessage);
-    console.log(error);
-});
+// firebase.auth().signInAnonymously().then(function(argument) {
+//     // setCookie('anon');
+//     console.log('logged in');
+// }).catch(function(error) {
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     alert(errorMessage);
+//     console.log(error);
+// });
 var database = firebase.database();
 var readRef = database.ref('curBoard/1324');
 var big, minicount, megacount, player, currPos, cplayer, currXpos = "",
@@ -253,7 +253,7 @@ function getBig(val) {
 $('#logout').click(function(event) {
     firebase.auth().signOut();
     console.log('logged out');
-    // window.location.replace("/logout");
+    window.location.replace("/logout");
 });
 
 function writeData(play, cpos) {
