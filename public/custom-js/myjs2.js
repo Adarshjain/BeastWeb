@@ -1,13 +1,13 @@
 block(9);
 firebase.auth().signInAnonymously().then(function(argument) {
-        // setCookie('anon');
-        console.log('logged in');
-    }).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert(errorMessage);
-        console.log(error);
-    });
+    // setCookie('anon');
+    console.log('logged in');
+}).catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage);
+    console.log(error);
+});
 var database = firebase.database();
 var readRef = database.ref('curBoard/1324');
 var big, minicount, megacount, player, currPos, cplayer, currXpos = "",
@@ -47,7 +47,6 @@ $('#currplayo').click(function(event) {
 });
 $(function() {
     $('.modal').modal(); //Materailizecss dialog box
-    $('#modal2').modal('open');
 });
 $(".above").on('click', function() {
     Materialize.toast('You cannot play there!', 1500);
@@ -308,12 +307,14 @@ readRef.on('value', function(snap) {
             megacount: megacount,
             big: big.toString()
         });
+        console.log('got data');
         alert('Start');
     } else {
+        console.log('got data with data');
         cplayer = snap.val().cplayer;
         totXpos = snap.val().xpos;
         totOpos = snap.val().opos;
-        console.log(player);
+        console.log(totOpos);
         currCpos = snap.val().cpos;
         minicountString = snap.val().minicount;
         minicount = minicountString.split(',').map(Number);
@@ -343,10 +344,8 @@ function setMatrix(xp, op) {
 
 function sync() {
     if(cplayer != player) {
-        console.log(cplayer + " x " + player);
         block(9);
     } else {
-        block(10);
         if(currCpos != "") {
             block(nextBigPos(currCpos));
         }

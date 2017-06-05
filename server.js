@@ -21,7 +21,7 @@ firebase.initializeApp(config);
 var port = process.env.PORT || 8080;
 
 app.use(cp());
-var patho = __dirname + '/Uncompressed/';
+var patho = __dirname + '/public/';
 app.get('/', function(req, res) {
     // res.clearCookie('token');
     if(req.cookies.token) {
