@@ -18,39 +18,48 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8000;
 
 app.use(cp());
 var patho = __dirname + '/public/';
 app.get('/', function(req, res) {
-    // res.clearCookie('token');
     if(req.cookies.token) {
         res.sendFile(patho + 'index.html');
     } else {
         res.redirect('/login');
     }
 });
+
 app.use(express.static(patho));
 
 app.get('/login', function(req, res) {
     if(!req.cookies.token) {
         res.sendFile(patho + 'login.html');
     } else {
-        res.redirect('/');
+        res.redirect('/main');
     }
 });
 
-app.get('/logout',function (req,res) {
-    res.clearCookie('token');
-    res.redirect('/login');
-})
-
 app.post('/login', function(req, res) {
+    console.log('got post data in login');
     var token = req.body.token;
     res.cookie('token', token);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ a: 1 }));
     console.log('Redirected to /');
+});
+
+app.get('/main', function(req, res) {
+    if(req.cookies.token) {
+        res.sendFile(patho + 'main.html');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/logout', function(req, res) {
+    res.clearCookie('token');
+    res.redirect('/login');
 });
 
 app.listen(port, function() {

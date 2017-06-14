@@ -66,6 +66,7 @@ $('#ereg').click(function(event) {
 
 $('#guest').click(function(event) {
     firebase.auth().signInAnonymously().then(function(argument) {
+        console.log('anon');
         setCookie('anon');
     }).catch(function(error) {
         var errorCode = error.code;
@@ -75,6 +76,11 @@ $('#guest').click(function(event) {
     });
 });
 
+$('#logosku').click(e=>{
+    firebase.auth().signOut();
+    console.log('logged out');
+    window.location.replace("/logout");
+});
 
 function auth() {
     firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -113,42 +119,7 @@ $('#ph').click(function(event) {
 
 $(document).ready(function() {
     $('.modal').modal();
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recap', {
-        'size': 'invisible',
-        'callback': function(response) {
-            onSignInSubmit();
-        }
-    });
 });
-
-function onSignInSubmit() {
-    if(isPhoneNumberValid()) {
-        var phoneNumber = $('#phno').val();
-        var appVerifier = window.recaptchaVerifier;
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then(function(confirmationResult) {
-                var code = window.prompt('Enter the verification code you received by SMS');
-                if(code) {
-                    confirmationResult.confirm(code).then(function() {
-                        console.log('success');
-                        window.close();
-                    }).catch(function(error) {
-                        console.error('Error while checking the verification code', error);
-                        window.alert('Error while checking the verification code:\n\n' + error.code + '\n\n' + error.message)
-                    });
-                }
-            }).catch(function(error) {
-                console.error('Error during signInWithPhoneNumber', error);
-                window.alert('Error during signInWithPhoneNumber:\n\n' + error.code + '\n\n' + error.message);
-            });
-    }
-}
-
-function isPhoneNumberValid() {
-    var pattern = /^\+[0-9\s\-\(\)]+$/;
-    var phoneNumber = $('#phno').val();
-    return phoneNumber.search(pattern) !== -1;
-}
 
 function setCookie(email) {
     var myObj = {};
@@ -162,7 +133,7 @@ function setCookie(email) {
         data: JSON.stringify(myObj),
         success: function(data, status, jqXHR) {
             console.log('Success');
-            window.location.replace("/");
+            window.location.replace("/main");
         },
         error: function(jqXHR, status) {
             console.log('Fail' + status);
