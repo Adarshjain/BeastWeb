@@ -3,13 +3,11 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
-var minicount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Maintianing number of spots played (Used to check 'Draw' condition)
-var megacount = 0;
-var big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
-        2, 2, 2,
-        2, 2, 2,
-        2, 2, 2
-    ];
+// var minicount = [0, 0, 0, 0, 0, 0, 0, 0, 0]; //Maintianing number of spots played (Used to check 'Draw' condition)
+// var megacount = 0;
+// var big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
+//         2,2,2,2,2,2,2,2,2
+//     ];
 
 
 exports.createTable = functions.database.ref('searching/modeNormal/{key}/uid')
@@ -45,31 +43,28 @@ exports.createTable = functions.database.ref('searching/modeNormal/{key}/uid')
                         var tableKey = admin.database().ref('/board').push().key;
                         var xuid = prev['uid'];
                         var ouid = fuid;
-                        return admin.database().ref('/board').child(tableKey).set({
+
+                        console.log('prev key' + prev['key']);
+                        console.log('new key' + event.params.key);
+                        var board = {
                             x: xuid,
                             o: ouid,
                             cplayer: 0,
                             xpos: "",
                             opos: "",
                             cpos: "",
-                            minicount: minicount.toString(),
-                            megacount: megacount,
-                            big: big.toString(),
-                            first:true
-                        }).then(snapshot => {
-                            var updates = {};
-                            updates[xuid + '/pushKey'] = tableKey;
-                            updates[ouid + '/pushKey'] = tableKey;
-                            admin.database().ref('/players/').update(updates);
-
-                            var deleteUpdate = {};
-                            console.log('prev key' + prev['key']);
-                            console.log('new key' + event.params.key);
-                            deleteUpdate[prev['key']] = null;
-                            deleteUpdate[event.params.key] = null;
-                            admin.database().ref('searching/modeNormal/').update(deleteUpdate);
-                            console.log('Table created! Cleaned data!');
-                        });
+                            minicount: "0,0,0,0,0,0,0,0,0",
+                            megacount: 0,
+                            big: "2,2,2,2,2,2,2,2,2",
+                            first: true
+                        };
+                        var update = {};
+                        update['/searching/modeNormal/' + prev['key']] = null;
+                        update['/searching/modeNormal/' + event.params.key] = null;
+                        update['/players/' + xuid + '/pushKey'] = tableKey;
+                        update['/players/' + ouid + '/pushKey'] = tableKey;
+                        update['/board/' + tableKey] = board;
+                        return admin.database().ref().update(update);
                     }
                 }
             });

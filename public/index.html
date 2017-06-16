@@ -3,8 +3,12 @@
 
     <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
-        <link rel="stylesheet" type="text/css" href="index.css" id="size-stylesheet">
+        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" id="size-stylesheet">
+        <script type="text/javascript" src="jq.js"></script>
+        <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+        <script type="text/javascript" src="custom-js/index-ui.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#212121">
         <link rel="icon" sizes="192x192" href="asset/xwin.jpg">
@@ -24,11 +28,11 @@
     </head>
 
     <body>
-        <img src="asset/x.jpg" alt="" class="visi"><img src="asset/o.jpg" alt="" class="visi">
-        <img src="asset/x-mega.jpg" alt="" class="visi"><img src="asset/o-mega.jpg" alt="" class="visi">
-        <img src="asset/xwin.jpg" alt="" class="visi"><img src="asset/owin.jpg" alt="" class="visi">
-        <img src="asset/xwin-mega.jpg" alt="" class="visi"><img src="asset/owin-mega.jpg" alt="" class="visi">
-        <img src="asset/draw.jpg" alt="" class="visi">
+        <img src="asset/x.jpg" alt="" style="display: none;"><img src="asset/o.jpg" alt="" style="display: none;">
+        <img src="asset/x-mega.jpg" alt="" style="display: none;"><img src="asset/o-mega.jpg" alt="" style="display: none;">
+        <img src="asset/xwin.jpg" alt="" style="display: none;"><img src="asset/owin.jpg" alt="" style="display: none;">
+        <img src="asset/xwin-mega.jpg" alt="" style="display: none;"><img src="asset/owin-mega.jpg" alt="" style="display: none;">
+        <img src="asset/draw.jpg" alt="" style="display: none;">
         <div class="card-cust">
             <div class="box-big lef tops" id="bb0">
                 <div class="above visi" id="b0"></div>
@@ -139,12 +143,13 @@
                 <div id="80" class="box-small cright bot"></div>
             </div>
         </div>
-        <div class="playstore right top">
+        <!-- <div class="playstore right top">
             <a href="https://drive.google.com/open?id=0B6MUkmnH7Pm3MmNWOU0xVm5oMkU" target="_blank">
                 <img src="asset/google-play-badge.png" class="gplay" alt="Google Play store"></a><img>
             </a>
-        </div>
+        </div> -->
         <div class="btn green" id="logout">Logout</div>
+        <div class="btn red" id="giveup">Give up!</div>
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <h4>Game Over</h4>
@@ -154,8 +159,6 @@
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
             </div>
         </div>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
         <script type="text/javascript" src="custom-js/index.js"></script>
     </body>
 

@@ -1,6 +1,6 @@
 block(9);
+var gaveup = false;
 var database = firebase.database();
-var firstTime = true;
 var curUid, readRef, big, minicount, megacount, player, currPos, cplayer, currXpos = "",
     currOpos = "",
     currCpos;
@@ -15,24 +15,6 @@ var matrix = [ //Player spot in every small box, whether X or O or not played --
         2, 2, 2, 2, 2, 2, 2, 2, 2,
         2, 2, 2, 2, 2, 2, 2, 2, 2,
     ];
-
-function adjustStyle(width) {
-    width = parseInt(width);
-    if(width < 701) {
-        $("#size-stylesheet").attr("href", "css/narrow.css");
-    } else if(width < 900) {
-        $("#size-stylesheet").attr("href", "css/medium.css");
-    } else {
-        $("#size-stylesheet").attr("href", "index.css");
-    }
-}
-
-$(function() {
-    adjustStyle($(this).width());
-    $(window).resize(function() {
-        adjustStyle($(this).width());
-    });
-});
 firebase.auth().onAuthStateChanged(function(user) {
     var displayName = user.displayName;
     var email = user.email;
@@ -42,13 +24,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     curUid = user.uid;
     var providerData = user.providerData;
     database.ref('/players/' + curUid).once('value', playerSnap => {
-        console.log(playerSnap.val());
-        readRef = database.ref('board/' + playerSnap.val().pushKey);
+        if(playerSnap.val() == null) {
+            console.log('null');
+            window.location.replace("/main");
+            return;
+        }
+        pushKey = playerSnap.val().pushKey;
+        readRef = database.ref('board/' + pushKey);
         getData();
     });
 });
 
-// function init() {
 big = [ //Big Box win or lost or draw or nothing happened yet --> 0->Xwon, 1->Owon, 2-> Nothing yet, 3->Draw
         2, 2, 2,
         2, 2, 2,
@@ -61,30 +47,57 @@ currOpos = "";
 currCpos = "";
 $('.box-small').removeClass('done').empty();
 $('.above').addClass('visi').empty();
-// }
+
 $(function() {
     $('.modal').modal(); //Materailizecss dialog box
 });
+
 $(".above").on('click', function() {
     Materialize.toast('You cannot play there!', 1500);
 });
 
+$('#giveup').click(e => {
+    // gaveup = true;
+    // readRef.set(null);
+    database.ref('/leaderboard/' + curUid).update({
+        score: 1
+    });
+});
+
+$(window).bind("unload", function(e) {
+    database.ref('board/' + pushKey).set(null);
+    alert('fgdfg');
+});
+
+// window.onbeforeunload = function(e) {
+//     e = e || window.event;
+//     // For IE and Firefox prior to version 4
+//     if(e) {
+//         e.returnValue = 'Sure?';
+//     }
+
+//     // For Safari
+//     return 'Sure?';
+// };
+
+// window.unlod = function (e) {
+// }
+
 $(".box-small").on('click', function() {
     if(!$(this).hasClass('done')) {
-        matrix[$(this).attr('id')] = player;
-        currPos = $(this).attr('id');
+        var id = $(this).attr('id');
+        matrix[id] = player;
+        currPos = id;
         var cBigPos = getBig(currPos);
         minicount[cBigPos] += 1;
-        writeData(player, currPos);
         if(player == 0) {
             $(this).empty().append('<img src="asset/x.jpg" class="xo-img"></img>');
-            checkSmall(currPos, cBigPos, false);
         } else if(player == 1) {
             $(this).empty().append('<img src="asset/o.jpg" class="xo-img"></img>');
-            checkSmall(currPos, cBigPos, false);
         }
+        checkSmall(currPos, cBigPos, false);
         block(nextBigPos(currPos));
-        $(this).addClass('done');
+        writeData(player, currPos);
     } else {
         Materialize.toast('Already Clicked', 1000);
     }
@@ -118,21 +131,26 @@ function checkSmall(currentSmall, currBigPos, update) { //Check single big block
 }
 
 function dispWin(po1, po2, po3, cBPos, update) { //Display single big block win/lose/draw condition
-    var pl;
-    if(cplayer == 1) {
+    if(big[cBPos] == 0) {
         img = "xwin";
         imgw = "x-mega";
-        pl = 1;
-    } else if(cplayer == 0) {
+    } else if(big[cBPos] == 1) {
         img = "owin";
         imgw = "o-mega";
-        pl = 1;
+    } else if(big[cBPos] == 2) {
+        if(cplayer == 0) {
+            img = "xwin";
+            imgw = "x-mega";
+        } else if(cplayer == 1) {
+            img = "owin";
+            imgw = "o-mega";
+        }
+        big[cBPos] = cplayer;
     }
     $("#" + po1).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#" + po2).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#" + po3).empty().append('<img src="asset/' + img + '.jpg" class="xo-img"></img>');
     $("#b" + cBPos).empty().removeClass('visi').append('<img src="asset/' + imgw + '.jpg" alt="" class="above xo-img-mega">');
-    big[cBPos] = pl;
     if(!update) {
         ++megacount;
     }
@@ -145,23 +163,11 @@ function nextBigPos(currPosVal) { //Get the position of next playable big block
 
 function block(position) { //Blocking and releasing of playable position
     if(position == 9) { //Block all
-        for(var i = 0; i < 9; i++) {
-            $('#b' + i).removeClass('visi');
-        }
-        for(var i = 0; i < 81; i++) {
-            $('#' + i).css("background-color", "#FFF");
-        }
-    } else if(position == 10) { // open all for initial condition
-        for(var i = 0; i < 9; i++) {
-            if(big[i] == 2) {
-                $('#b' + i).addClass('visi');
-            }
-        }
+        $('.above').removeClass('visi');
+        $('.box-small').css("background-color", "#FFF");
     } else {
         minipos = position * 9;
-        for(var i = 0; i < 81; i++) {
-            $('#' + i).css("background-color", "#FFF");
-        }
+        $('.box-small').css("background-color", "#FFF");
         if(big[position] != 2) { // Open choice condition
             //Block all - reset
             for(var i = 0; i < 9; i++) {
@@ -273,9 +279,8 @@ $('#logout').click(function(event) {
 function writeData(play, cpos) {
     if(play == 0) {
         currXpos = currXpos + ',' + cpos;
-        play = 1;
         readRef.update({
-            cplayer: play,
+            cplayer: 1,
             xpos: currXpos,
             cpos: cpos,
             minicount: minicount.toString(),
@@ -285,9 +290,8 @@ function writeData(play, cpos) {
         });
     } else {
         currOpos = currOpos + ',' + cpos;
-        play = 0;
         readRef.update({
-            cplayer: play,
+            cplayer: 0,
             opos: currOpos,
             cpos: cpos,
             minicount: minicount.toString(),
@@ -301,35 +305,34 @@ function writeData(play, cpos) {
 function getData() {
     readRef.on('value', function(snap) {
         if(snap.val() == null) {
-            alert('Your opponent left the game!! You won!! Your score will be updated soon!!');
-            //add leaderboard update
+            database.ref('/players/' + curUid).set(null);
+            if(gaveup == true) {
+                alert('You lost a point!');
+            } else {
+                // database.ref('players/' + curUid).set(null);
+                alert('Your opponent left the game!! You won!! Your score will be updated soon!!');
+                //add leaderboard update
+            }
             window.location.replace("/main");
         } else {
             var snapVal = snap.val();
-
-            // init();
             var xplayer = snapVal.x;
             var oplayer = snapVal.o;
             if(snapVal.first) {
-                // init();
                 if(xplayer == curUid) {
-                    // player = 0;
                     Materialize.toast('You are X!', 2000);
                 } else if(oplayer == curUid) {
-                    // player = 1;
                     Materialize.toast('You are O!', 2000);
                 } else {
-                    alert('Self Destruct in 5s!');
+                    alert('Self Destruct in 3.3s!');
                 }
             }
             if(xplayer == curUid) {
                 player = 0;
-                // Materialize.toast('You are X!', 1500);
             } else if(oplayer == curUid) {
                 player = 1;
-                // Materialize.toast('You are O!', 1500);
             } else {
-                alert('Self Destruct in 5s!');
+                alert('Self Destruct in 9s!');
             }
             cplayer = snapVal.cplayer;
             currXpos = snapVal.xpos;
@@ -370,11 +373,9 @@ function sync() {
             block(nextBigPos(currCpos));
         }
     }
-    if(currCpos != "") {
-        checkSmall(currCpos, getBig(currCpos), true);
-    }
     for(var i = 0; i < 9; i++) {
         var temp = i * 9;
         checkSmall(temp, getBig(temp), true);
     }
+    adjustStyle();
 }

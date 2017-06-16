@@ -1,0 +1,67 @@
+.card-cust {
+    position: absolute;
+    bottom: 0px !important;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    transition: .3s;
+    transition: .3s;
+    border-radius: 2px;
+    background: #90a4ae;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+}
+.card-cust:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+.box-big {
+    float: left;
+    background: #bdbdbd;
+}
+.box-small {
+    float: left;
+    cursor: pointer;
+    background-color: #fff;
+}
+.above {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    opacity: .9;
+}
+.centr {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+.centr.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cleft.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cright.mid {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cen {
+    margin-right: 1px;
+    margin-left: 1px;
+}
+.lef.mids {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.ri8.mids {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.cen.mids {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.visi {
+    display: none;
+}
