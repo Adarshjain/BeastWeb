@@ -25,6 +25,7 @@ $('#elogin').click(function(event) {
         alert('Please enter atleast a 4 digit password.');
         return;
     }
+    hideMe();
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(argument) {
         setCookie(argument.email);
     }).catch(function(error) {
@@ -50,6 +51,7 @@ $('#ereg').click(function(event) {
         alert('Please enter atleast a 4 digit password.');
         return;
     }
+    hideMe();
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(argument) {
         setCookie(argument.email);
     }).catch(function(error) {
@@ -65,6 +67,7 @@ $('#ereg').click(function(event) {
 });
 
 $('#guest').click(function(event) {
+    hideMe();
     firebase.auth().signInAnonymously().then(function(argument) {
         console.log('anon');
         setCookie('anon');
@@ -76,13 +79,8 @@ $('#guest').click(function(event) {
     });
 });
 
-$('#logosku').click(e=>{
-    firebase.auth().signOut();
-    console.log('logged out');
-    window.location.replace("/logout");
-});
-
 function auth() {
+    hideMe();
     firebase.auth().signInWithPopup(provider).then(function(result) {
         var token = result.credential.accessToken;
         var user = result.user;
@@ -113,10 +111,6 @@ function validateEmail(email) {
 }
 //endregion
 
-$('#ph').click(function(event) {
-    onSignInSubmit();
-});
-
 $(document).ready(function() {
     $('.modal').modal();
 });
@@ -139,4 +133,9 @@ function setCookie(email) {
             console.log('Fail' + status);
         },
     });
+}
+
+function hideMe() {
+    $('#load').removeClass('visi');
+    $('#main').addClass('visi');
 }

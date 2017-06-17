@@ -2,6 +2,51 @@
 <html lang="en">
 
     <head>
+        <style>
+        #load {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            margin: -100px 0 0 -100px;
+        }
+        
+        #preload {
+            width: 70px;
+            height: 70px;
+            border: 5px solid #212121;
+            border-radius: 50%;
+            border-top: 5px solid #FFEB3B;
+            border-bottom: 5px solid #FFEB3B;
+            width: 100px;
+            height: 100px;
+            margin: 20px 0 0 50px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .visi {
+            display: none;
+        }
+        </style>
         <!--region-->
         <meta charset="UTF-8">
         <title>Document</title>
@@ -28,43 +73,52 @@
         <!--endregion-->
     </head>
 
-    <body>
-        <div class="container">
-            <div class="row center">
-                <div class="col s12 m12 l8 center offset-l2">
-                    <div class="card" id="scard">
-                        <div class="card-content">
-                            <div class="card-title">Sign In with</div>
-                            <div class="row"></div>
-                            <div class="row">
-                                <div class="col s12 m6 l6">
-                                    <a class="btn btn-large white-text waves-effect red waves-light" id="goog">
-                                        <img src="asset/glogo.jpg" alt="" class="logo left"> Google
-                                    </a>
-                                </div>
-                                <!-- <div class="col s12 m6 l6">
+    <body class="grey darken-4">
+        <div id="load" class="center visi">
+            <div id="preload"></div>
+            <br>
+            <br>
+            <div id="load-text" class="white-text center">
+                <h5>Logging you in...<br />Warming up the Beast!</h5></div>
+        </div>
+        <div id="main">
+            <div class="container">
+                <div class="row center">
+                    <div class="col s12 m12 l8 center offset-l2">
+                        <div class="card" id="scard">
+                            <div class="card-content">
+                                <div class="card-title">Sign In with</div>
+                                <div class="row"></div>
+                                <div class="row">
+                                    <div class="col s12 m6 l6">
+                                        <a class="btn btn-large white-text waves-effect red waves-light" id="goog">
+                                            <img src="asset/glogo.jpg" alt="" class="logo left"> Google
+                                        </a>
+                                    </div>
+                                    <!-- <div class="col s12 m6 l6">
                                     <a class="btn btn-large white-text waves-effect indigo waves-light" id="fb">
                                         <img src="asset/fb.png" alt="" class="logo left"> Facebook
                                     </a>
                                 </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="row"> -->
-                                <div class="col s12 m6 l6">
-                                    <a class="waves-effect btn-large waves-light brown btn white-text" href="#email-modal">
-                                        <img src="asset/email.png" alt="" class="logo left"> Email
-                                    </a>
-                                </div>
-                                <!-- <div class="col s12 m6 l6">
+                                    <!-- </div> -->
+                                    <!-- <div class="row"> -->
+                                    <div class="col s12 m6 l6">
+                                        <a class="waves-effect btn-large waves-light brown btn white-text" href="#email-modal">
+                                            <img src="asset/email.png" alt="" class="logo left"> Email
+                                        </a>
+                                    </div>
+                                    <!-- <div class="col s12 m6 l6">
                                     <a class="waves-effect white-text btn-large waves-light btn green" id="logosku">
                                         <img src="asset/phone.png" alt="" class="logo left"> Phone
                                     </a>
                                 </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="row"> -->
-                                <div class="col s12 m6 l6">
-                                    <a class="waves-effect btn-large waves-light btn white-text" id="guest">
-                                        <img src="asset/guests.png" alt="" class="logo left"> Guest Sign In
-                                    </a>
+                                    <!-- </div> -->
+                                    <!-- <div class="row"> -->
+                                    <div class="col s12 m6 l6">
+                                        <a class="waves-effect btn-large waves-light btn white-text" id="guest">
+                                            <img src="asset/guests.png" alt="" class="logo left"> Guest Sign In
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,3 +1,4 @@
+var found = false;
 var database = firebase.database();
 var searchRef = database.ref('searching/modeNormal');
 var uid;
@@ -11,17 +12,23 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log('uid:' + uid);
         database.ref('/players/' + uid).on('value', snap => {
             if(snap.val() != null) {
-            console.log(snap.val());
+                console.log(snap.val());
                 window.location.replace("/");
             } else {
-                $('#search').click(() => {
-                    console.log('Adding...');
-                    var searchkey = searchRef.push().key;
-                    searchRef.child(searchkey).set({
-                        uid: uid
+                database.ref('searching/modeNormal').once('value', searchSnap => {
+                    if(searchSnap.val() != null) {
+                        addClick();
+                    }
+                    searchSnap.forEach(csnap => {
+                        if(csnap.val().uid == uid) {
+                            $('#load-text').text('Finding a beast you could spar with!!');
+                            found = true;
+                        }
                     });
+                    if(!found) {
+                        addClick();
+                    }
                 });
-                console.log('Searching...');
             }
         });
     } else {
@@ -29,3 +36,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         window.location.replace("/login");
     }
 });
+
+function addClick() {
+    $('#main').removeClass('visi');
+            $('#load').addClass('visi');
+    $('#search').click(() => {
+        $('#load-text').text('Finding a beast you could spar with!!');
+        $('#load').removeClass('visi');
+        $('#main').addClass('visi');
+        var searchkey = searchRef.push().key;
+        searchRef.child(searchkey).set({
+            uid: uid
+        });
+    });
+}
